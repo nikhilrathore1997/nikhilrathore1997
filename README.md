@@ -39,20 +39,14 @@ I'm a tech enthusiast based in the dynamic city of City Hyderabad. With a backgr
 
 ## My Projects
 
-#### [Multi-Object Tracking System](Link to Project)
+#### [Multi-Object Tracking System]
 
 Developed a multi-object tracking system utilizing OpenVINO models for real-time object tracking in video streams.
 
-#### [Camera Tampering Detection](Link to Project)
+#### [Camera Tampering Detection]
 
 Working on a project to detect and prevent camera tampering using OpenCV, ensuring the integrity of surveillance systems.
 
-## Blog
-
-I share my insights and experiences on AI, Computer Vision, and Deep Learning on my [Medium](https://medium.com/@yourusername). Here are a few popular articles:
-
-- [Getting Started with OpenCV for Beginners](Link to Article)
-- [Demystifying Multi-Object Tracking Techniques](Link to Article)
 
 ## Get in Touch
 

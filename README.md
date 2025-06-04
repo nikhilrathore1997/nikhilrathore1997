@@ -47,6 +47,9 @@ Developed a multi-object tracking system utilizing OpenVINO models for real-time
 
 Working on a project to detect and prevent camera tampering using OpenCV, ensuring the integrity of surveillance systems.
 
+### [Face Recognition System]
+
+Build a FRS Application using JNI , worked on 60 lacs of face images.
 
 ## Get in Touch
 

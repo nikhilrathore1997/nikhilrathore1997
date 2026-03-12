@@ -1,58 +1,115 @@
-<!---- 👋 Hi, I’m Nikhil Rathore
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
+<!-- HEADER -->
+<h1 align="center">Hi 👋, I'm [YOUR NAME]</h1>
+<h3 align="center">Computer Vision Engineer | Edge AI | Production Surveillance Systems</h3>
 
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=2E75B6&center=true&vCenter=true&width=600&lines=Computer+Vision+Engineer+%7C+4%2B+Years;Face+Recognition+%40+70L+Scale;Edge+AI+%7C+OpenVINO+%7C+TensorRT;Real-Time+CCTV+Analytics" alt="Typing SVG" />
+</p>
+---
 
-nikhilrathore1997/nikhilrathore1997 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
-# Hey, I'm Nikhil Rathore 👋
+## 🧠 About Me
 
-AI Engineer | Computer Vision Enthusiast | Model Optimization Enthusiast
+- 🔭 Currently building a **modular CCTV analytics platform** — RTSP → YOLOv8 → FastAPI → AWS
+- 💼 4+ years shipping production CV systems for **banking, retail & surveillance**
+- ⚡ Specialized in the **full pipeline**: train → optimize → edge deploy → integrate
+- 🏦 Built face recognition for **70 lakh bank customers** using ArcFace + HNSW
+- 🍓 Deployed Re-ID tracker on **Raspberry Pi at 4 FPS** via OpenVINO INT8
+- 📫 Reach me at: **nikhilrathore021997@gmail.com**
+- 🌐 LinkedIn: **https://in.linkedin.com/in/nikhil-rathore-98416b1ba**
+---
+## 🛠️ Tech Stack
 
-📍 Based in City Hyderabad
-🎓 MCA Post Graduate from National Institute of Technology, Warangal (NITW)
-📧 [nicrathore@gmail.com]
-💼 [LinkedIn](https://www.linkedin.com/in/nikhil-rathore-98416b1ba)
+**Computer Vision & ML**
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-27338e?style=flat&logo=OpenCV&logoColor=white)
+![YOLO](https://img.shields.io/badge/YOLOv8-00FFFF?style=flat&logoColor=black)
 
-## About Me
+**Optimization & Deployment**
+![TensorRT](https://img.shields.io/badge/TensorRT-76B900?style=flat&logo=nvidia&logoColor=white)
+![OpenVINO](https://img.shields.io/badge/OpenVINO-0071C5?style=flat&logo=intel&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
 
-I'm a tech enthusiast based in the dynamic city of City Hyderabad. With a background in Computer Science and a deep passion for AI and Computer Vision, I'm on a journey to unravel the potential of cutting-edge technologies to create meaningful solutions.
+**Languages**
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
 
-## What I Do
+**Cloud & Tools**
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white)
+---
 
-- 🔭 Specialized in AI, Computer Vision, and Deep Learning
-- 🌱 Constantly exploring new techniques, models, and optimization strategies
-- 👯 Collaborative approach to solving complex challenges
-- 🚀 Enthusiastic about sharing knowledge and learning from others
+## 🚀 Featured Projects
 
-## Tech Stack
+### 🏦 Face Recognition System for Banking (FRS)
+> Real-time customer identification from live CCTV — 70 lakh enrolled identities
 
-- 💻 Proficient in Python and familiar with c++ and Java basics
-- 📷 Hands-on experience with OpenCV for computer vision tasks
-- 🧠 Worked with Arcface for face recognition systems
-- 🎯 Implemented multi-object tracking using OpenVINO models
-- 🛡️ Currently diving into Camera Tampering detection using OpenCV
-- ⚙️ Experienced in model optimization, converted PyTorch YOLOX and YOLOV5 model to OpenVINO INT8 for CPU inference
+- **Model**: ArcFace (glint360k) + RetinaFace detection
+- **Scale**: 70L+ registered faces with **HNSW approximate nearest neighbor** indexing
+- **Inference**: TensorRT GPU engine + face quality filtering on registration
+- **Output**: Customer account + tier (A/A+/B/B++) pushed to branch manager in real-time
+- **Integration**: Delivered as C++ JNI library (.so + .jar) for Java banking application
+- `ArcFace` `TensorRT` `HNSW` `C++` `JNI` `OpenCV`
 
-## My Projects
+---
+### 🔁 Custom Person Re-ID + Edge Tracker
+> Trained from scratch → INT8 quantized → 4 FPS on Raspberry Pi in production
 
-#### [Multi-Object Tracking System]
+- **Model**: ResNet-50 + ArcFace head + BatchHard Triplet Loss + CrossEntropy
+- **Sampling**: RandomIdentitySampler for balanced identity batches
+- **Optimization**: GPU TensorRT → OpenVINO INT8 → Raspberry Pi deployment
+- **Result**: 4 FPS on Pi, live at multiple bank & retail sites
+- **Tracker**: C++ multi-object tracker compiled as JNI library
+- `PyTorch` `OpenVINO` `TensorRT` `C++` `JNI` `Raspberry Pi`
 
-Developed a multi-object tracking system utilizing OpenVINO models for real-time object tracking in video streams.
+---
 
-#### [Camera Tampering Detection]
+### 🤝 Automated Frisking Compliance System
+> Novel keypoint-based algorithm — no existing solution, designed from scratch
 
-Working on a project to detect and prevent camera tampering using OpenCV, ensuring the integrity of surveillance systems.
+- **Approach**: Human pose estimation + minimum distance between guard hands and employee keypoints
+- **Logic**: Tracks coverage — flags incomplete frisking (<90%) with supervisor notification
+- **Impact**: Fully replaces manual CCTV monitoring at bank entry points
+- `Pose Estimation` `OpenCV` `Python` `Real-Time Detection`
 
-### [Face Recognition System]
+---
 
-Build a FRS Application using JNI , worked on 60 lacs of face images.
+### 📡 Modular CCTV Intelligence Platform *(In Progress)*
+> Productizing surveillance AI as deployable microservices — live on AWS
 
-## Get in Touch
+- **Stack**: RTSP ingestion → YOLOv8 → Redis state → FastAPI → WebSocket dashboard
+- **Deployed**: AWS Free Tier
+- **Goal**: Package detection modules (intrusion, crowd, anomaly) for SME customers
+- [`View Repo`](https://github.com/nikhilrathore1997/cctv-platform)
+- `FastAPI` `YOLOv8` `Docker` `Redis` `AWS` `WebSocket`
+---
 
-Feel free to connect with me via [LinkedIn](https://www.linkedin.com/in/yourprofile) or drop me an email at [Your Email]. I'm always excited to connect with fellow tech enthusiasts, share ideas, and explore new opportunities.
+## 📊 GitHub Stats
 
-Looking forward to collaborating and making an impact together!
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=nikhilrathore1997&show_icons=true&theme=tokyonight&hide_border=true" width="48%" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=nikhilrathore1997&theme=tokyonight&hide_border=true" width="48%" />
+</p>
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=nikhilrathore1997&layout=compact&theme=tokyonight&hide_border=true" width="40%" />
+</p>
+---
+
+## 🤝 Connect With Me
+
+<p align="left">
+  <a href="https://linkedin.com/in/nikhil-rathore-98416b1ba" target="blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="mailto:nikhilrathore021997@gmail.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+  </a>
+</p>
+---
+<p align="center">
+  <i>"I don't just train models — I ship them to production."</i>
+</p>

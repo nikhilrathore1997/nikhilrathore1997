@@ -1,5 +1,5 @@
 <!-- HEADER -->
-<h1 align="center">Hi 👋, I'm [YOUR NAME]</h1>
+<h1 align="center">Hi 👋, I'm NIKHIL RATHORE</h1>
 <h3 align="center">Computer Vision Engineer | Edge AI | Production Surveillance Systems</h3>
 
 <p align="center">

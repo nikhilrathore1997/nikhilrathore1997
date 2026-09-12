@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Nikhil Rathore | Computer Vision & AI Engineer</title>
 <meta name="description" content="Portfolio of Nikhil Rathore — Computer Vision & AI Engineer specializing in face recognition, person re-identification, multi-camera tracking and edge AI deployment." />
-<meta name="theme-color" content="#0a0e17" />
+<meta name="theme-color" content="#05070d" />
 
 <!-- Favicon (inline monogram, no external file needed) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0e17'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300d4ff'/%3E%3Cstop offset='1' stop-color='%237c5cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial,Helvetica,sans-serif' font-weight='700' text-anchor='middle' fill='url(%23g)'%3ENR%3C/text%3E%3C/svg%3E" />
@@ -19,16 +19,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <link rel="stylesheet" href="css/style.css" />
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-<!-- Cursor glow (desktop only, controlled via JS) -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
+<!-- Space background: starfield + drifting planets + meteors (canvas, whole page, fixed) -->
+<canvas id="spaceCanvas" aria-hidden="true"></canvas>
 
-<!-- Loading screen -->
-<div class="preloader" id="preloader" aria-hidden="true">
-  <div class="preloader-ring"></div>
+<!-- Custom cosmic cursor: comet-dust trail canvas + bright point + trailing ringed planet -->
+<canvas id="cursorTrail" aria-hidden="true"></canvas>
+<div class="cursor-point" id="cursorPoint" aria-hidden="true"></div>
+<div class="cursor-orb" id="cursorOrb" aria-hidden="true">
+  <span class="cursor-ring"></span>
+  <span class="cursor-core"></span>
 </div>
 
 <!-- NAVBAR -->
@@ -63,8 +66,6 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
     <div class="grid-overlay"></div>
   </div>
 
@@ -436,16 +437,17 @@
 
       <form class="contact-form reveal-up" id="contactForm" style="animation-delay:.1s">
         <!--
-          This form uses Formspree (https://formspree.io) so submissions arrive straight to
-          nikhilrathore021997@gmail.com — no backend server needed on GitHub Pages.
-          SETUP (one-time, ~2 minutes):
-            1. Go to https://formspree.io and sign up free with your email.
-            2. Create a new form; verify it via the confirmation email.
-            3. Copy the Form ID it gives you (looks like "mzbqjqld").
-            4. Replace YOUR_FORM_ID below with that ID.
-          Until you do this, the form will show an error toast instead of sending.
+          This form uses FormSubmit (https://formsubmit.co) — a free service that needs
+          NO account signup. Submissions are POSTed straight to nikhilrathore021997@gmail.com.
+          ONE-TIME STEP: the very first time this form is submitted (by you or anyone),
+          FormSubmit emails nikhilrathore021997@gmail.com an "activation" link — click it
+          once and every submission after that (from anyone, anywhere) lands in the inbox
+          automatically. No dashboard, no password, no ID to copy.
         -->
-        <input type="hidden" name="_subject" value="New portfolio contact form message" />
+        <input type="hidden" name="_subject" value="New message from portfolio contact form" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <div class="form-row">
           <div class="form-group">
             <input type="text" id="name" name="name" placeholder=" " required />
@@ -464,7 +466,7 @@
           <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
           <label for="message">Message</label>
         </div>
-        <button type="submit" class="btn btn-primary form-submit" id="formSubmit" data-endpoint="https://formspree.io/f/YOUR_FORM_ID">
+        <button type="submit" class="btn btn-primary form-submit" id="formSubmit" data-endpoint="https://formsubmit.co/ajax/nikhilrathore021997@gmail.com">
           <span class="btn-text"><i class="fa-solid fa-paper-plane"></i> Send Message</span>
           <span class="btn-loader"></span>
         </button>

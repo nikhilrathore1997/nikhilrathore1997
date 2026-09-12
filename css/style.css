@@ -4,8 +4,8 @@
 
 :root{
   /* Dark theme (default) */
-  --bg: #0a0e17;
-  --bg-alt: #0d1220;
+  --bg: #05070d;
+  --bg-alt: rgba(9,13,26,0.62);
   --surface: rgba(255,255,255,0.04);
   --surface-strong: rgba(255,255,255,0.07);
   --border: rgba(255,255,255,0.09);
@@ -23,7 +23,7 @@
 
 [data-theme="light"]{
   --bg: #f5f7fb;
-  --bg-alt: #ffffff;
+  --bg-alt: rgba(255,255,255,0.7);
   --surface: rgba(15,23,42,0.035);
   --surface-strong: rgba(15,23,42,0.06);
   --border: rgba(15,23,42,0.09);
@@ -38,13 +38,27 @@
 
 html{ scroll-behavior:smooth; scroll-padding-top: var(--nav-h); }
 
+html, body{ background: var(--bg); }
+
 body{
-  background: var(--bg);
   color: var(--text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height:1.65;
   overflow-x:hidden;
   transition: background .4s ease, color .4s ease;
+}
+
+/* Whole-page space backdrop: starfield + drifting planets + meteors, drawn on canvas.
+   Fixed + first in DOM + default stacking (no z-index) so every section (each already
+   position:relative) simply paints over it in document order — the classic reliable
+   "canvas background" pattern, no negative z-index trickery involved. */
+#spaceCanvas{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display:block;
+  pointer-events: none;
 }
 
 h1,h2,h3,.logo{ font-family:'Space Grotesk', 'Inter', sans-serif; }
@@ -61,6 +75,13 @@ input,textarea{ font:inherit; color:inherit; }
 ::-webkit-scrollbar-track{ background: var(--bg); }
 ::-webkit-scrollbar-thumb{ background: var(--accent-2); border-radius:10px; }
 
+/* Frosted-glass look for cards floating over the starfield */
+.stat-card, .skill-card, .project-card, .timeline-card, .edu-card,
+.contact-item, .contact-form, .chip, .scan-frame{
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 .accent{ color: var(--accent-1); }
 .accent-gradient{
   background: var(--accent-grad);
@@ -76,7 +97,11 @@ input,textarea{ font:inherit; color:inherit; }
 }
 
 .section{ padding: 120px 0; position:relative; }
-.section-alt{ background: var(--bg-alt); }
+.section-alt{
+  background: var(--bg-alt);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
 
 .section-tag{
   display:inline-block;
@@ -130,38 +155,59 @@ input,textarea{ font:inherit; color:inherit; }
   transform: translateY(-3px);
 }
 
-/* ---------------- Cursor glow ---------------- */
-.cursor-dot,.cursor-glow{
-  position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
-  border-radius:50%;
-  transform: translate(-50%,-50%);
-  transition: opacity .3s ease;
-}
-.cursor-dot{ width:8px; height:8px; background: var(--accent-1); }
-.cursor-glow{
-  width:34px; height:34px;
-  border:1.5px solid var(--accent-1);
-  transition: width .2s ease, height .2s ease, transform .12s linear, opacity .3s ease, border-color .2s ease;
-}
-.cursor-glow.grow{ width:56px; height:56px; border-color: var(--accent-2); }
-@media (hover:none), (pointer:coarse){
-  .cursor-dot,.cursor-glow{ display:none; }
+/* ---------------- Cosmic cursor ---------------- */
+/* Comet-dust trail, drawn on canvas, sits between the page and the cursor graphics */
+#cursorTrail{
+  position:fixed; inset:0; width:100vw; height:100vh; z-index:9995; pointer-events:none;
 }
 
-/* ---------------- Preloader ---------------- */
-.preloader{
-  position:fixed; inset:0; background: var(--bg);
-  display:flex; align-items:center; justify-content:center;
-  z-index: 10000;
-  transition: opacity .5s ease, visibility .5s ease;
+/* Bright point sits exactly on the real pointer, like a fixed star */
+.cursor-point{
+  position:fixed; top:0; left:0; width:6px; height:6px; border-radius:50%;
+  background:#fff; box-shadow: 0 0 10px 2px var(--accent-1), 0 0 2px #fff;
+  transform: translate(-50%,-50%);
+  pointer-events:none; z-index:9998;
+  transition: opacity .3s ease;
 }
-.preloader.hide{ opacity:0; visibility:hidden; }
-.preloader-ring{
-  width:52px; height:52px; border-radius:50%;
-  border: 3px solid var(--surface-strong);
-  border-top-color: var(--accent-1);
-  animation: spin 0.9s linear infinite;
+
+/* Orb wrapper trails the pointer with easing — a little "planet" being pulled along */
+.cursor-orb{
+  position:fixed; top:0; left:0; width:0; height:0;
+  pointer-events:none; z-index:9997;
+  transition: transform .3s cubic-bezier(.2,.8,.3,1.4), opacity .3s ease;
 }
+.cursor-core{
+  position:absolute; top:0; left:0; width:16px; height:16px; border-radius:50%;
+  background: var(--accent-grad);
+  box-shadow: 0 0 18px rgba(0,212,255,0.55);
+  transform: translate(-50%,-50%);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.cursor-ring{
+  position:absolute; top:0; left:0; width:40px; height:17px;
+  border: 1.5px solid var(--accent-1);
+  border-radius:50%;
+  opacity:.8;
+  transform-origin:center;
+  animation: cursor-ring-spin 5s linear infinite;
+  transition: width .25s ease, height .25s ease, border-color .25s ease, opacity .25s ease;
+}
+@keyframes cursor-ring-spin{
+  from{ transform: translate(-50%,-50%) rotateX(72deg) rotate(0deg); }
+  to{ transform: translate(-50%,-50%) rotateX(72deg) rotate(360deg); }
+}
+.cursor-orb.grow .cursor-core{
+  transform: translate(-50%,-50%) scale(1.7);
+  box-shadow: 0 0 30px rgba(124,92,255,0.7);
+}
+.cursor-orb.grow .cursor-ring{
+  width:60px; height:26px; border-color: var(--accent-2); opacity:1;
+}
+
+@media (hover:none), (pointer:coarse){
+  .cursor-point, .cursor-orb, #cursorTrail{ display:none; }
+}
+
 @keyframes spin{ to{ transform: rotate(360deg); } }
 
 /* ---------------- Navbar ---------------- */
@@ -236,16 +282,6 @@ input,textarea{ font:inherit; color:inherit; }
   overflow:hidden;
 }
 .hero-bg{ position:absolute; inset:0; z-index:0; overflow:hidden; }
-.blob{
-  position:absolute; border-radius:50%; filter: blur(90px); opacity:.35;
-  animation: float 12s ease-in-out infinite;
-}
-.blob-1{ width:420px; height:420px; background: var(--accent-1); top:-100px; right:-80px; }
-.blob-2{ width:380px; height:380px; background: var(--accent-2); bottom:-120px; left:-100px; animation-delay:-6s; }
-@keyframes float{
-  0%,100%{ transform: translate(0,0) scale(1); }
-  50%{ transform: translate(30px,-30px) scale(1.08); }
-}
 .grid-overlay{
   position:absolute; inset:0;
   background-image:
@@ -554,8 +590,11 @@ input,textarea{ font:inherit; color:inherit; }
 .toast.show{ opacity:1; visibility:visible; transform: translateX(-50%) translateY(0); }
 
 /* ---------------- Reveal animations ---------------- */
-.reveal-up{ opacity:0; transform: translateY(36px); transition: opacity .7s ease, transform .7s cubic-bezier(.16,.84,.44,1); }
-.reveal-up.in-view{ opacity:1; transform: translateY(0); }
+/* Only hidden pre-reveal when JS is confirmed running (html.js, set synchronously
+   in <head>) — if JS ever fails to load, content stays fully visible instead of
+   being stuck invisible forever. */
+.js .reveal-up{ opacity:0; transform: translateY(36px); transition: opacity .7s ease, transform .7s cubic-bezier(.16,.84,.44,1); }
+.js .reveal-up.in-view{ opacity:1; transform: translateY(0); }
 
 /* ==========================================================================
    Responsive

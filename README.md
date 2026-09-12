@@ -3,6 +3,11 @@
 <h3 align="center">Computer Vision Engineer | Edge AI | Production Surveillance Systems</h3>
 
 <p align="center">
+  🌐 <strong>Live Portfolio:</strong> <a href="https://nikhilrathore1997.github.io/nikhilrathore1997/">nikhilrathore1997.github.io/nikhilrathore1997</a>
+  &nbsp;•&nbsp; <em>(source in <code>index.html</code> / <code>css/</code> / <code>js/</code> — enable in Settings → Pages once merged)</em>
+</p>
+
+<p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=2E75B6&center=true&vCenter=true&width=600&lines=Computer+Vision+Engineer+%7C+4%2B+Years;Face+Recognition+%40+70L+Scale;Edge+AI+%7C+OpenVINO+%7C+TensorRT;Real-Time+CCTV+Analytics" alt="Typing SVG" />
 </p>
 ---

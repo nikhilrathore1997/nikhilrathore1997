@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nikhil Rathore | Computer Vision & AI Engineer</title>
+<meta name="description" content="Portfolio of Nikhil Rathore — Computer Vision & AI Engineer specializing in face recognition, person re-identification, multi-camera tracking and edge AI deployment." />
+<meta name="theme-color" content="#0a0e17" />
+
+<!-- Favicon (inline monogram, no external file needed) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0e17'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300d4ff'/%3E%3Cstop offset='1' stop-color='%237c5cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial,Helvetica,sans-serif' font-weight='700' text-anchor='middle' fill='url(%23g)'%3ENR%3C/text%3E%3C/svg%3E" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- Cursor glow (desktop only, controlled via JS) -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- Loading screen -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader-ring"></div>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#home" class="logo">N<span class="accent">R</span><span class="logo-dot"></span></a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active" data-section="home">Home</a>
+      <a href="#about" class="nav-link" data-section="about">About</a>
+      <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+      <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+      <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+      <a href="#education" class="nav-link" data-section="education">Education</a>
+      <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="assets/Nikhil_Rathore_Resume.pdf" download class="btn btn-outline nav-resume">
+        <i class="fa-solid fa-download"></i> Resume
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="section-container hero-container">
+    <div class="hero-text reveal-up">
+      <p class="hero-eyebrow"><span class="pulse-dot"></span> Available for freelance & full-time opportunities</p>
+      <h1 class="hero-title">Hi, I'm <span class="accent-gradient">Nikhil Rathore</span></h1>
+      <h2 class="hero-role">
+        <span id="typewriter"></span><span class="cursor-blink">|</span>
+      </h2>
+      <p class="hero-desc">
+        I build production-grade computer vision systems — from real-time face recognition at
+        <strong> 70 lakh+ identity scale</strong> to person re-identification models running on
+        <strong> Raspberry Pi at the edge</strong>. 4+ years turning research into deployed, reliable AI.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">
+          <i class="fa-solid fa-paper-plane"></i> Let's Talk
+        </a>
+        <a href="assets/Nikhil_Rathore_Resume.pdf" download class="btn btn-outline">
+          <i class="fa-solid fa-file-arrow-down"></i> Download CV
+        </a>
+      </div>
+
+      <div class="hero-socials">
+        <a href="https://github.com/nikhilrathore1997" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/in/nikhil-rathore-98416b1ba" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:nikhilrathore021997@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="tel:+917794093525" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal-up" style="animation-delay:.15s">
+      <div class="scan-frame">
+        <div class="scan-line"></div>
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="scan-core">
+          <i class="fa-solid fa-camera-retro"></i>
+        </div>
+        <span class="chip chip-1">Face Match 99.7%</span>
+        <span class="chip chip-2">ID #70,00,214</span>
+        <span class="chip chip-3">FPS: 30</span>
+      </div>
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+    <span></span>
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-container">
+    <p class="section-tag reveal-up">About Me</p>
+    <h2 class="section-title reveal-up">Turning research into <span class="accent-gradient">real-world AI</span></h2>
+
+    <div class="about-grid">
+      <div class="about-text reveal-up">
+        <p>
+          I'm a Computer Vision & AI Engineer at <strong>Magellanic Cloud Ltd</strong> (previously
+          IVIS International), building real-time video analytics systems used across banking,
+          retail and surveillance deployments in production.
+        </p>
+        <p>
+          My work spans the full pipeline: training deep learning models, optimizing them with
+          quantization (PTQ/QAT) and hardware acceleration (TensorRT, OpenVINO), and deploying them
+          on everything from NVIDIA GPUs to ARM edge devices like the Raspberry Pi 5 — without
+          sacrificing accuracy or latency.
+        </p>
+        <p>
+          I care about shipping AI that actually works in the field: fewer false alerts, faster
+          inference, and systems that hold up across 100+ live site cameras.
+        </p>
+        <div class="about-meta">
+          <div><i class="fa-solid fa-location-dot"></i> Hyderabad, India</div>
+          <div><i class="fa-solid fa-briefcase"></i> Software Engineer — CV & AI</div>
+          <div><i class="fa-solid fa-graduation-cap"></i> MCA, NIT Warangal</div>
+        </div>
+      </div>
+
+      <div class="stats-grid reveal-up" style="animation-delay:.1s">
+        <div class="stat-card">
+          <div class="stat-number" data-count="4" data-suffix="+">0</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-count="70" data-suffix="L+">0</div>
+          <div class="stat-label">Faces at Recognition Scale</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-count="100" data-suffix="+">0</div>
+          <div class="stat-label">Live Site Cameras Supported</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-count="15" data-suffix="+">0</div>
+          <div class="stat-label">AI Models Shipped</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section section-alt" id="skills">
+  <div class="section-container">
+    <p class="section-tag reveal-up">What I Work With</p>
+    <h2 class="section-title reveal-up">Skills & <span class="accent-gradient">Technologies</span></h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-card reveal-up">
+        <div class="skill-card-head"><i class="fa-solid fa-code"></i><h3>Languages</h3></div>
+        <div class="tag-list">
+          <span class="tag">Python</span><span class="tag">Java</span>
+          <span class="tag">C++</span><span class="tag">JNI</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal-up" style="animation-delay:.05s">
+        <div class="skill-card-head"><i class="fa-solid fa-brain"></i><h3>Deep Learning</h3></div>
+        <div class="tag-list">
+          <span class="tag">PyTorch</span><span class="tag">TensorFlow</span>
+          <span class="tag">Keras</span><span class="tag">HuggingFace</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal-up" style="animation-delay:.1s">
+        <div class="skill-card-head"><i class="fa-solid fa-eye"></i><h3>Computer Vision</h3></div>
+        <div class="tag-list">
+          <span class="tag">OpenCV</span><span class="tag">Person Re-ID</span>
+          <span class="tag">Multi-Object Tracking</span><span class="tag">Face Recognition</span>
+          <span class="tag">Pose Estimation</span><span class="tag">Object Detection</span>
+          <span class="tag">Segmentation</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal-up" style="animation-delay:.15s">
+        <div class="skill-card-head"><i class="fa-solid fa-gauge-high"></i><h3>Optimization & Acceleration</h3></div>
+        <div class="tag-list">
+          <span class="tag">ONNX</span><span class="tag">OpenVINO (FP32/INT8)</span>
+          <span class="tag">TensorRT</span><span class="tag">CUDA</span>
+          <span class="tag">PTQ</span><span class="tag">QAT</span>
+          <span class="tag">Latency Profiling</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal-up" style="animation-delay:.2s">
+        <div class="skill-card-head"><i class="fa-solid fa-microchip"></i><h3>Edge Deployment</h3></div>
+        <div class="tag-list">
+          <span class="tag">NVIDIA GPUs</span><span class="tag">Intel CPUs</span>
+          <span class="tag">ARM / Raspberry Pi 5</span><span class="tag">Embedded Targets</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal-up" style="animation-delay:.25s">
+        <div class="skill-card-head"><i class="fa-solid fa-server"></i><h3>Infrastructure</h3></div>
+        <div class="tag-list">
+          <span class="tag">Docker</span><span class="tag">Linux</span>
+          <span class="tag">Git</span><span class="tag">AWS EC2</span>
+          <span class="tag">Flask</span><span class="tag">FastAPI</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-container">
+    <p class="section-tag reveal-up">Career Path</p>
+    <h2 class="section-title reveal-up">Work <span class="accent-gradient">Experience</span></h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-head">
+            <div>
+              <h3>Software Engineer — Computer Vision & AI</h3>
+              <p class="timeline-org">Magellanic Cloud Ltd, Hyderabad</p>
+            </div>
+            <span class="timeline-date">Sept 2021 — Present</span>
+          </div>
+          <ul>
+            <li>Joined IVIS International Pvt Ltd in Sept 2021; transferred to parent company Magellanic Cloud Ltd in Oct 2024, continuing in the AI/ML Engineer role.</li>
+            <li>Developed real-time face recognition, people tracking, and frisking-compliance systems using deep learning and image processing.</li>
+            <li>Built and optimized sample apps/POCs across Python, C++, and Java for testing and deployment.</li>
+            <li>Integrated C++ inference logic with Java applications via JNI for fast, scalable backend processing.</li>
+            <li>Designed internal tools for automated video-clip handling, model inference, and system health checks.</li>
+            <li>Reduced false alerts in video analytics while maintaining rule-based logic across 100+ site cameras.</li>
+            <li>Led client dashboard improvements — tracking daily events and producing monthly accuracy reports.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-up" style="animation-delay:.1s">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-head">
+            <div>
+              <h3>Software Developer Intern</h3>
+              <p class="timeline-org">IVIS International Private Limited, Hyderabad</p>
+            </div>
+            <span class="timeline-date">Feb 2021 — Aug 2021</span>
+          </div>
+          <ul>
+            <li>Selected through campus placement for a technical internship during the final semester.</li>
+            <li>Worked on an attire-classification deep learning model.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section section-alt" id="projects">
+  <div class="section-container">
+    <p class="section-tag reveal-up">Selected Work</p>
+    <h2 class="section-title reveal-up">Featured <span class="accent-gradient">Projects</span></h2>
+
+    <div class="projects-grid">
+
+      <div class="project-card reveal-up">
+        <div class="project-icon"><i class="fa-solid fa-building-columns"></i></div>
+        <h3>Banking Face Recognition at Scale</h3>
+        <p>Real-time customer identification from live CCTV across 70 lakh+ enrolled identities using ArcFace + RetinaFace, with HNSW approximate nearest-neighbor search and TensorRT inference. Delivered as a C++/JNI library for Java banking applications.</p>
+        <div class="tag-list small">
+          <span class="tag">ArcFace</span><span class="tag">TensorRT</span><span class="tag">HNSW</span><span class="tag">JNI</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" style="animation-delay:.05s">
+        <div class="project-icon"><i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i></div>
+        <h3>Person Re-ID + Edge Tracker</h3>
+        <p>Trained a ResNet-50 + ArcFace head with Batch-Hard Triplet Loss from scratch, quantized to INT8, and deployed live at 4 FPS on Raspberry Pi across bank and retail sites via OpenVINO.</p>
+        <div class="tag-list small">
+          <span class="tag">PyTorch</span><span class="tag">OpenVINO INT8</span><span class="tag">Raspberry Pi</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" style="animation-delay:.1s">
+        <div class="project-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Automated Frisking Compliance</h3>
+        <p>A novel, from-scratch keypoint-based system that measures coverage between guard hands and employee body keypoints to flag incomplete security frisking (&lt;90%) in real time, replacing manual CCTV review.</p>
+        <div class="tag-list small">
+          <span class="tag">Pose Estimation</span><span class="tag">OpenCV</span><span class="tag">Rule Engine</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" style="animation-delay:.15s">
+        <div class="project-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+        <h3>Modular CCTV Intelligence Platform</h3>
+        <p>Productizing surveillance AI as deployable microservices: RTSP ingestion → YOLOv8 detection → Redis state → FastAPI → WebSocket dashboard, deployed on AWS.</p>
+        <div class="tag-list small">
+          <span class="tag">YOLOv8</span><span class="tag">FastAPI</span><span class="tag">Redis</span><span class="tag">AWS</span>
+        </div>
+        <a class="project-link" href="https://github.com/nikhilrathore1997/cctv-platform" target="_blank" rel="noopener">View Repo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+
+      <div class="project-card reveal-up" style="animation-delay:.2s">
+        <div class="project-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+        <h3>Gate-Level People Counter</h3>
+        <p>Object tracking and re-identification pipeline for accurate gate-level people counting, with real-time event visualization through a lightweight web client.</p>
+        <div class="tag-list small">
+          <span class="tag">Tracking</span><span class="tag">Re-ID</span><span class="tag">Web Client</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" style="animation-delay:.25s">
+        <div class="project-icon"><i class="fa-solid fa-video"></i></div>
+        <h3>AI Inference Monitoring Tool</h3>
+        <p>A web tool to run and monitor AI inference on server-side video data, with interactive selection of models, classes, sites, and date ranges.</p>
+        <div class="tag-list small">
+          <span class="tag">Flask</span><span class="tag">Dashboard</span><span class="tag">Video Analytics</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" style="animation-delay:.3s">
+        <div class="project-icon"><i class="fa-solid fa-face-smile"></i></div>
+        <h3>Face Quality Model</h3>
+        <p>A dedicated model to filter good vs. bad quality face captures at registration time, boosting downstream face-recognition accuracy.</p>
+        <div class="tag-list small">
+          <span class="tag">CNN</span><span class="tag">Quality Filtering</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" style="animation-delay:.35s">
+        <div class="project-icon"><i class="fa-solid fa-car"></i></div>
+        <h3>Int8 Person-Vehicle Motion Detection</h3>
+        <p>Custom motion-triggered object detection built on a quantized Int8 IR person-vehicle model for efficient, always-on site monitoring.</p>
+        <div class="tag-list small">
+          <span class="tag">INT8 IR</span><span class="tag">OpenVINO</span><span class="tag">Motion Detection</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" style="animation-delay:.4s">
+        <div class="project-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Site Analytics Suite</h3>
+        <p>Camera tampering detection, gender detection, vehicle detection, weapon detection, object color prediction, no-video detection, image quality enhancement, and staff detection — shipped across live customer sites.</p>
+        <div class="tag-list small">
+          <span class="tag">Detection Models</span><span class="tag">Image Processing</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & ACHIEVEMENTS -->
+<section class="section" id="education">
+  <div class="section-container">
+    <p class="section-tag reveal-up">Background</p>
+    <h2 class="section-title reveal-up">Education & <span class="accent-gradient">Achievements</span></h2>
+
+    <div class="edu-grid">
+      <div class="edu-card reveal-up">
+        <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h3>National Institute of Technology, Warangal</h3>
+        <p class="edu-sub">Master of Computer Application &middot; July 2018 – June 2021</p>
+        <p class="edu-courses">Operating Systems, Data Structures, Analysis of Algorithms, Artificial Intelligence, Machine Learning, Networking, Databases</p>
+      </div>
+
+      <div class="edu-card reveal-up" style="animation-delay:.1s">
+        <div class="edu-icon"><i class="fa-solid fa-trophy"></i></div>
+        <h3>Achievements</h3>
+        <ul class="achieve-list">
+          <li><i class="fa-solid fa-star"></i> 256 AIR — NIMCET MCA Entrance Exam (2018)</li>
+          <li><i class="fa-solid fa-star"></i> 27 AIR — VIT MCA Entrance Exam (2018)</li>
+          <li><i class="fa-solid fa-star"></i> Certified in Problem Solving by HackerRank</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-alt" id="contact">
+  <div class="section-container">
+    <p class="section-tag reveal-up">Get In Touch</p>
+    <h2 class="section-title reveal-up">Let's Build Something <span class="accent-gradient">Together</span></h2>
+    <p class="section-sub reveal-up">Have a project, role, or idea in mind? My inbox is open — I usually reply within a day.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal-up">
+        <a href="mailto:nikhilrathore021997@gmail.com" class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div><span>Email</span><p>nikhilrathore021997@gmail.com</p></div>
+        </a>
+        <a href="tel:+917794093525" class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+          <div><span>Phone</span><p>+91 77940 93525</p></div>
+        </a>
+        <a href="https://linkedin.com/in/nikhil-rathore-98416b1ba" target="_blank" rel="noopener" class="contact-item">
+          <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+          <div><span>LinkedIn</span><p>nikhil-rathore-98416b1ba</p></div>
+        </a>
+        <a href="https://github.com/nikhilrathore1997" target="_blank" rel="noopener" class="contact-item">
+          <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+          <div><span>GitHub</span><p>@nikhilrathore1997</p></div>
+        </a>
+      </div>
+
+      <form class="contact-form reveal-up" id="contactForm" style="animation-delay:.1s">
+        <!--
+          This form uses Formspree (https://formspree.io) so submissions arrive straight to
+          nikhilrathore021997@gmail.com — no backend server needed on GitHub Pages.
+          SETUP (one-time, ~2 minutes):
+            1. Go to https://formspree.io and sign up free with your email.
+            2. Create a new form; verify it via the confirmation email.
+            3. Copy the Form ID it gives you (looks like "mzbqjqld").
+            4. Replace YOUR_FORM_ID below with that ID.
+          Until you do this, the form will show an error toast instead of sending.
+        -->
+        <input type="hidden" name="_subject" value="New portfolio contact form message" />
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder=" " required />
+            <label for="name">Your Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder=" " required />
+            <label for="email">Your Email</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" id="subject" name="subject" placeholder=" " />
+          <label for="subject">Subject</label>
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+          <label for="message">Message</label>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit" id="formSubmit" data-endpoint="https://formspree.io/f/YOUR_FORM_ID">
+          <span class="btn-text"><i class="fa-solid fa-paper-plane"></i> Send Message</span>
+          <span class="btn-loader"></span>
+        </button>
+        <p class="form-note" id="formNote"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="section-container footer-inner">
+    <p>&copy; <span id="year"></span> Nikhil Rathore. Built with HTML, CSS & JavaScript.</p>
+    <div class="footer-socials">
+      <a href="https://github.com/nikhilrathore1997" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://linkedin.com/in/nikhil-rathore-98416b1ba" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="mailto:nikhilrathore021997@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
